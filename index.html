@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RODEO — rodeo.baby</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Smokum&family=Ewert&family=Sancreek&family=Ranchers&family=Ultra&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #8ECDEB;
+    --red: #C8342A;
+    --white: #FDF6EC;
+    --rope-light: #D9C49C;
+    --rope-dark: #BFA275;
+    --rope-line: #8A6F45;
+    --ink: #3A2A1A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--sky);
+    font-family: 'Ranchers', system-ui, sans-serif;
+    color: var(--ink);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ── Rope nav ──────────────────────────────────────────── */
+  nav.rope-nav {
+    position: relative;
+    padding-top: 10px;
+  }
+  .rope-band { display: block; width: 100%; height: 34px; }
+  .nav-items {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1.5rem, 6vw, 4rem);
+    list-style: none;
+    padding: 10px 1rem 6px;
+  }
+  .nav-items a {
+    font-family: 'Ranchers', sans-serif;
+    font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--white);
+    text-shadow: 2px 2px 0 var(--red);
+    transition: transform 0.15s ease;
+    display: inline-block;
+  }
+  .nav-items a:hover { transform: rotate(-4deg) scale(1.12); }
+
+  /* ── Hero ─────────────────────────────────────────────── */
+  header.hero {
+    text-align: center;
+    padding: clamp(2rem, 7vh, 5rem) 1rem 1rem;
+    position: relative;
+  }
+  h1.title {
+    font-family: 'Rye', serif;
+    font-size: clamp(4rem, 16vw, 11rem);
+    color: var(--white);
+    text-shadow: 6px 6px 0 var(--red);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+  }
+  p.tagline {
+    font-family: 'Ultra', serif;
+    font-size: clamp(1rem, 3vw, 1.6rem);
+    color: var(--red);
+    margin-top: 1.2rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Silhouette field ─────────────────────────────────── */
+  .pasture {
+    position: relative;
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    min-height: 320px;
+  }
+  .shape { position: absolute; }
+  .shape svg { display: block; width: 100%; height: auto; }
+  .cow-1 { width: clamp(140px, 22vw, 260px); left: 4%;  top: 10%;  }
+  .cow-2 { width: clamp(110px, 17vw, 200px); right: 8%; top: 45%; transform: scaleX(-1) rotate(3deg); }
+  .hat-1 { width: clamp(70px, 10vw, 120px);  left: 38%; top: 0;   transform: rotate(-12deg); }
+  .hat-2 { width: clamp(55px, 8vw, 95px);   right: 28%; top: 4%;  transform: rotate(9deg); }
+  .cow-3 { width: clamp(90px, 13vw, 160px);  left: 26%; top: 58%; transform: rotate(-2deg); }
+  .fill-red   { fill: var(--red); }
+  .fill-white { fill: var(--white); }
+
+  /* ── Font specimen strip (temporary — pick one, then I delete this) ── */
+  section.specimens {
+    background: rgba(253, 246, 236, 0.55);
+    border-top: 4px dashed var(--red);
+    margin-top: 3rem;
+    padding: 2rem 1rem 3rem;
+    text-align: center;
+  }
+  section.specimens h2 {
+    font-family: 'Ultra', serif;
+    color: var(--red);
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .specimen { margin: 1.1rem 0; }
+  .specimen .word {
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    color: var(--white);
+    text-shadow: 3px 3px 0 var(--red);
+    line-height: 1.1;
+  }
+  .specimen .label {
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .f-rye      { font-family: 'Rye', serif; }
+  .f-smokum   { font-family: 'Smokum', serif; }
+  .f-ewert    { font-family: 'Ewert', serif; }
+  .f-sancreek { font-family: 'Sancreek', serif; }
+  .f-ranchers { font-family: 'Ranchers', sans-serif; }
+  .f-ultra    { font-family: 'Ultra', serif; }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem 2.5rem;
+    font-family: 'Ranchers', sans-serif;
+    color: var(--white);
+    text-shadow: 1px 1px 0 var(--red);
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<nav class="rope-nav" aria-label="main">
+  <!-- Flat SVG twisted rope — variant (a). Photoreal codex texture = variant (b), swappable. -->
+  <svg class="rope-band" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <pattern id="ropeTwist" width="36" height="34" patternUnits="userSpaceOnUse">
+        <rect width="36" height="34" fill="var(--rope-dark)"/>
+        <path d="M -10 34 L 16 0 L 30 0 L 4 34 Z" fill="var(--rope-light)"/>
+        <path d="M 26 34 L 52 0 L 66 0 L 40 34 Z" fill="var(--rope-light)"/>
+        <path d="M -12 34 L 14 0" stroke="var(--rope-line)" stroke-width="2.5" fill="none"/>
+        <path d="M 24 34 L 50 0" stroke="var(--rope-line)" stroke-width="2.5" fill="none"/>
+      </pattern>
+    </defs>
+    <rect x="0" y="5" width="1200" height="24" rx="12" fill="url(#ropeTwist)" stroke="var(--rope-line)" stroke-width="3"/>
+  </svg>
+  <ul class="nav-items">
+    <li><a href="#">Rodeo</a></li>
+    <li><a href="#">When</a></li>
+    <li><a href="#">Where</a></li>
+    <li><a href="#">Ride</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <h1 class="title">RODEO</h1>
+  <p class="tagline">an event. by some friends. rodeo.baby</p>
+</header>
+
+<!-- Placeholder silhouettes — swapped for Michael's generated cows on arrival -->
+<div class="pasture" aria-hidden="true">
+  <div class="shape cow-1">
+    <svg viewBox="0 0 200 120">
+      <path class="fill-white" d="M28 52 q-8-20 8-24 q4-10 16-8 q10-14 22-6 l4 8 q40-10 74-2 q22 6 26 24 q4 16-4 28 l-2 22 q0 4-5 4 l-6 0 q-4 0-4-5 l-1-13 -12 3 -1 11 q0 4-5 4 l-6 0 q-4 0-4-5 l0-11 q-24 4-46 0 l-2 12 q-1 4-5 4 l-6 0 q-4 0-4-5 l1-14 -8-8 q-16 2-20-10 q-2-8 2-13 z"/>
+    </svg>
+  </div>
+  <div class="shape cow-2">
+    <svg viewBox="0 0 200 120">
+      <path class="fill-red" d="M28 52 q-8-20 8-24 q4-10 16-8 q10-14 22-6 l4 8 q40-10 74-2 q22 6 26 24 q4 16-4 28 l-2 22 q0 4-5 4 l-6 0 q-4 0-4-5 l-1-13 -12 3 -1 11 q0 4-5 4 l-6 0 q-4 0-4-5 l0-11 q-24 4-46 0 l-2 12 q-1 4-5 4 l-6 0 q-4 0-4-5 l1-14 -8-8 q-16 2-20-10 q-2-8 2-13 z"/>
+    </svg>
+  </div>
+  <div class="shape cow-3">
+    <svg viewBox="0 0 200 120">
+      <path class="fill-white" d="M28 52 q-8-20 8-24 q4-10 16-8 q10-14 22-6 l4 8 q40-10 74-2 q22 6 26 24 q4 16-4 28 l-2 22 q0 4-5 4 l-6 0 q-4 0-4-5 l-1-13 -12 3 -1 11 q0 4-5 4 l-6 0 q-4 0-4-5 l0-11 q-24 4-46 0 l-2 12 q-1 4-5 4 l-6 0 q-4 0-4-5 l1-14 -8-8 q-16 2-20-10 q-2-8 2-13 z"/>
+    </svg>
+  </div>
+  <div class="shape hat-1">
+    <svg viewBox="0 0 120 70">
+      <path class="fill-red" d="M35 38 q-2-22 8-30 q6-5 12-2 q5-4 11 0 q10 8 9 32 q22 2 30 10 q4 5-2 8 q-40 12 -96 0 q-6-3-2-8 q9-8 30-10 z"/>
+    </svg>
+  </div>
+  <div class="shape hat-2">
+    <svg viewBox="0 0 120 70">
+      <path class="fill-white" d="M35 38 q-2-22 8-30 q6-5 12-2 q5-4 11 0 q10 8 9 32 q22 2 30 10 q4 5-2 8 q-40 12 -96 0 q-6-3-2-8 q9-8 30-10 z"/>
+    </svg>
+  </div>
+</div>
+
+<section class="specimens">
+  <h2>Pick yer poison — font specimens</h2>
+  <div class="specimen"><div class="word f-rye">RODEO</div><div class="label">Rye — wanted-poster classic</div></div>
+  <div class="specimen"><div class="word f-smokum">RODEO</div><div class="label">Smokum — loose western slab</div></div>
+  <div class="specimen"><div class="word f-ewert">RODEO</div><div class="label">Ewert — saloon-sign wood type</div></div>
+  <div class="specimen"><div class="word f-sancreek">RODEO</div><div class="label">Sancreek — western circus</div></div>
+  <div class="specimen"><div class="word f-ranchers">RODEO</div><div class="label">Ranchers — chunky &amp; friendly</div></div>
+  <div class="specimen"><div class="word f-ultra">RODEO</div><div class="label">Ultra — fat slab workhorse</div></div>
+</section>
+
+<footer>rodeo.baby &mdash; yeehaw est. 2026</footer>
+
+</body>
+</html>
