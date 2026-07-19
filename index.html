@@ -21,6 +21,7 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
+    position: relative;
     background: var(--sky);
     font-family: 'Ultra', system-ui, serif;
     color: var(--ink);
@@ -95,6 +96,9 @@
     text-transform: uppercase;
     opacity: 0.7;
   }
+
+  .side-shog { position: absolute; z-index: 0; }
+  @media (max-width: 900px) { .side-shog { display: none; } }
 
   footer {
     text-align: center;
@@ -189,6 +193,12 @@
     The Event Proper
   </p>
 </section>
+
+<!-- Side shoggoths: small ones haunting the margins -->
+<img class="side-shog" src="assets/shog-hoop-left-white.png"  alt="" style="width:84px; left:1.2%; top:780px;">
+<img class="side-shog" src="assets/shog-dance-red.png"        alt="" style="width:72px; left:2%;   top:1560px; transform:rotate(-8deg);">
+<img class="side-shog" src="assets/shog-hoop-right-red.png"   alt="" style="width:88px; right:1.2%; top:1050px;">
+<img class="side-shog" src="assets/shog-dance-white.png"      alt="" style="width:70px; right:2%;  top:1900px; transform:scaleX(-1) rotate(7deg);">
 
 <!-- Bottom corral: horse silhouettes along the page floor -->
 <div class="corral" aria-hidden="true" style="position:relative; margin-top:4rem; height:clamp(110px,16vw,190px); overflow:hidden;">
